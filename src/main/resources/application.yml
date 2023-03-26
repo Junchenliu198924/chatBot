@@ -1,0 +1,29 @@
+
+############################################################
+#
+# web访问端口号  默认约定：8079
+#
+############################################################
+server:
+  port: ${SERVER_PORT:8079}
+  error:
+    whitelabel:
+      enabled: true
+  tomcat:
+    uri-encoding: UTF-8
+  max-http-header-size: 80KB
+  servlet:
+    encoding:
+      force: true
+    context-path: /bocim-gpt-api
+spring:
+  servlet:
+    multipart:
+      max-file-size: 300MB  #文件上传大小限制为500kb
+      max-request-size: 300MB #请求大小限制为500kb
+bocim:
+  #appKey: da42c8a9-6859-4238-9f62-6b1359866401
+  #appSecurity: b0e3e1fe-a33a-4bc0-a2eb-5010ed6c55c7
+  openaiApiKey: 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
+  openaiMode: gpt-3.5-turbo"
+  apiWebsite: https://api.openai.com/v1/chat/completions
