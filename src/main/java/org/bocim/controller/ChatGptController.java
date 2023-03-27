@@ -49,7 +49,7 @@ public class ChatGptController {
 //    private static final String API_URL = "https://api.openai.com/v1/engines/davinci-codex/chat/completions";
     private  static  final  String API_URL="https://api.openai.com/v1/chat/completions" ;
 //    https://api.openai.com/v1/chat/completions
-    private static final String API_KEY = "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";
+    private static final String API_KEY = "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";
 
     @Autowired
     private   AppProperties  appProperties   ;
