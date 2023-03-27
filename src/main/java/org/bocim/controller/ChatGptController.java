@@ -9,9 +9,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import okhttp3.*;
+import org.bocim.config.AppProperties;
 import org.bocim.vo.ChatRequest;
 import org.bocim.vo.ChatResponse;
 import org.bocim.vo.JsonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -49,6 +51,9 @@ public class ChatGptController {
 //    https://api.openai.com/v1/chat/completions
     private static final String API_KEY = "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";
 
+    @Autowired
+    private   AppProperties  appProperties   ;
+
     @PostMapping("/chat-mode")
     public ChatResponse chatWithGpt(@org.springframework.web.bind.annotation.RequestBody ChatRequest messages) throws IOException, JSONException {
 
@@ -64,7 +69,7 @@ public class ChatGptController {
         ObjectMapper objectMapper = new ObjectMapper();
         JSONObject   jsonObject  =  new JSONObject(JsonUtils.toJson(messages));
 //        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("model" , "gpt-3.5-turbo") ;
+        jsonObject.put("model" , appProperties.getOpenaiMode()) ;
         System.out.println(jsonObject.toString());
        // jsonObject.put("max_tokens" , 4000) ;
      //   jsonObject.put("n" , 1) ;
@@ -85,9 +90,9 @@ public class ChatGptController {
         //构建api请求
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toString());
         Request request = new Request.Builder()
-                .url(API_URL)
+                .url(appProperties.getApiWebsite())
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", "Bearer " + API_KEY)
+                .addHeader("Authorization", "Bearer " + appProperties.getOpenaiApiKey())
                 .post(requestBody)
                 .build();
         try (Response response = client.newCall(request).execute()) {
