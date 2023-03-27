@@ -43,7 +43,7 @@ import java.util.concurrent.TimeUnit;
  */
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/chatgpt")
 public class ChatGptController {
 //    private static final String API_URL = "https://api.openai.com/v1/engines/davinci-codex/chat/completions";
