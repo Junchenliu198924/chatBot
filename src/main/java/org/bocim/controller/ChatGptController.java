@@ -43,7 +43,6 @@ import java.util.concurrent.TimeUnit;
  */
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/api/chatgpt")
 public class ChatGptController {
 //    private static final String API_URL = "https://api.openai.com/v1/engines/davinci-codex/chat/completions";
@@ -71,7 +70,7 @@ public class ChatGptController {
 //        JSONObject jsonObject = new JSONObject();
         jsonObject.put("model" , appProperties.getOpenaiMode()) ;
         System.out.println(jsonObject.toString());
-       // jsonObject.put("max_tokens" , 4000) ;
+        jsonObject.put("max_tokens" , 4096) ;
      //   jsonObject.put("n" , 1) ;
       //  jsonObject.put("temperature" , 1) ;
 /*

@@ -24,7 +24,7 @@ spring:
 bocim:
   #appKey: da42c8a9-6859-4238-9f62-6b1359866401
   #appSecurity: b0e3e1fe-a33a-4bc0-a2eb-5010ed6c55c7
-  openaiApiKey: ${OPEN_KEY:da42c8a9-6859-4238-9f62-6b1359866401}
+  openaiApiKey: ${OPEN_KEY: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}
 #  openaiMode: gpt-3.5-turbo
   openaiMode: ${OPEN_MODE:gpt-3.5-turbo}
   apiWebsite: https://api.openai.com/v1/chat/completions
