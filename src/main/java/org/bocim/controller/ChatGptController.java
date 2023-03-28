@@ -70,7 +70,7 @@ public class ChatGptController {
 //        JSONObject jsonObject = new JSONObject();
         jsonObject.put("model" , appProperties.getOpenaiMode()) ;
         System.out.println(jsonObject.toString());
-        jsonObject.put("max_tokens" , 4096) ;
+//        jsonObject.put("max_tokens" , 4096) ;
      //   jsonObject.put("n" , 1) ;
       //  jsonObject.put("temperature" , 1) ;
 /*
