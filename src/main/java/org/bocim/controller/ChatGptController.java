@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import okhttp3.*;
+import org.apache.logging.log4j.util.Strings;
 import org.bocim.config.AppProperties;
 import org.bocim.vo.ChatRequest;
 import org.bocim.vo.ChatResponse;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,7 +70,11 @@ public class ChatGptController {
         ObjectMapper objectMapper = new ObjectMapper();
         JSONObject   jsonObject  =  new JSONObject(JsonUtils.toJson(messages));
 //        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("model" , appProperties.getOpenaiMode()) ;
+        if(messages !=null&& Strings.isNotBlank(messages.getChatMode())){
+            jsonObject.put("model" , messages.getChatMode()) ;
+        }else {
+            jsonObject.put("model" , appProperties.getOpenaiMode()) ;
+        }
         System.out.println(jsonObject.toString());
 //      jsonObject.put("max_tokens" , 4096) ;
      //   jsonObject.put("n" , 1) ;

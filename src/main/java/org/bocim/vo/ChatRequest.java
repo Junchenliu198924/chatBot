@@ -11,6 +11,17 @@ import java.util.List;
 public class ChatRequest {
     private List<Message> messages;
 
+
+    private String   chatMode ;
+
+    public String getChatMode() {
+        return chatMode;
+    }
+
+    public void setChatMode(String chatMode) {
+        this.chatMode = chatMode;
+    }
+
     public List<Message> getMessages() {
         return messages;
     }
