@@ -75,6 +75,7 @@ public class ChatGptController {
         }else {
             jsonObject.put("model" , appProperties.getOpenaiMode()) ;
         }
+        jsonObject.remove("chatMode")  ;
         System.out.println(jsonObject.toString());
 //      jsonObject.put("max_tokens" , 4096) ;
      //   jsonObject.put("n" , 1) ;
