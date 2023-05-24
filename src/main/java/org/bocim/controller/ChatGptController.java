@@ -62,6 +62,9 @@ public class ChatGptController {
         if (messages.getApikey().equals(appProperties.getBocimKey())){
 
 
+
+
+
         System.setProperty("https.protocols", "TLSv1,TLSv1.1,TLSv1.2");
 //        System.setProperty("https.protocols", "TLSv1.2");
 //        System.setProperty("jsse.enableSNIExtension", "false");
@@ -80,7 +83,10 @@ public class ChatGptController {
             jsonObject.put("model" , appProperties.getOpenaiMode()) ;
         }
         jsonObject.remove("chatMode")  ;
-        System.out.println(jsonObject.toString());
+
+            jsonObject.remove("apikey")  ;
+
+            System.out.println(jsonObject.toString());
 //      jsonObject.put("max_tokens" , 4096) ;
      //   jsonObject.put("n" , 1) ;
       //  jsonObject.put("temperature" , 1) ;
