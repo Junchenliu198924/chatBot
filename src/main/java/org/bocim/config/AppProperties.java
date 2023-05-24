@@ -18,6 +18,15 @@ public class AppProperties {
 
     private   String   apiWebsite  ;
 
+    private  String  bocimKey   ;
+
+    public String getBocimKey() {
+        return bocimKey;
+    }
+
+    public void setBocimKey(String bocimKey) {
+        this.bocimKey = bocimKey;
+    }
 
     public String getOpenaiApiKey() {
         return openaiApiKey;

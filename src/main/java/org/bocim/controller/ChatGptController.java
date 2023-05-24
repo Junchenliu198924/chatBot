@@ -58,6 +58,10 @@ public class ChatGptController {
     @PostMapping("/chat-mode")
     public ChatResponse chatWithGpt(@org.springframework.web.bind.annotation.RequestBody ChatRequest messages) throws IOException, JSONException {
 
+
+        if (messages.getApikey().equals(appProperties.getBocimKey())){
+
+
         System.setProperty("https.protocols", "TLSv1,TLSv1.1,TLSv1.2");
 //        System.setProperty("https.protocols", "TLSv1.2");
 //        System.setProperty("jsse.enableSNIExtension", "false");
@@ -111,6 +115,13 @@ public class ChatGptController {
             } else {
                 throw new IOException("请求OpenAI API时出现错误，错误代码：" + response.code());
             }
+        }
+        }else {
+
+            ChatResponse response = new ChatResponse();
+            response.setResponse("key error    !");
+            return   response ;
+
         }
 
     }

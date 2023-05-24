@@ -14,6 +14,18 @@ public class ChatRequest {
 
     private String   chatMode ;
 
+
+
+    private   String  apikey   ;
+
+    public String getApikey() {
+        return apikey;
+    }
+
+    public void setApikey(String apikey) {
+        this.apikey = apikey;
+    }
+
     public String getChatMode() {
         return chatMode;
     }
